@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sarah Angèle — Senior Product Manager, Cloud · Quantique · IA</title>
+<meta name="description" content="Sarah Angèle, Senior Product Manager avec 10 ans d'expérience sur des produits complexes et techniques — cloud, quantique et IA. Parcours atypique de développeuse autodidacte à Product Manager chez Pasqal, Air France et Gandi.">
+<!-- MAQUETTE 4 V2 — structure à onglets (À propos / Expérience / Portfolio). Remplace les textes entre [ ] par ton contenu réel -->
+<link rel="preconnect" href="https://api.fontshare.com">
+<link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@500,600,700,800&f[]=satoshi@400,500,600,700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#fbfbfd; --surface:#ffffff; --ink:#0b0d12; --muted:#5b6270; --line:#e6e8ec;
+    --accent:#2f5cff; --accent2:#00b8d9; --accent-soft:#eef2ff;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--bg); color:var(--ink); font-family:'Satoshi','Switzer','Inter',sans-serif; -webkit-font-smoothing:antialiased;}
+  h1,h2,h3{font-family:'Cabinet Grotesk','Switzer','Inter',sans-serif; font-weight:700; letter-spacing:-0.01em;}
+  .icon{width:20px; height:20px; stroke:currentColor; fill:none; stroke-width:1.6; stroke-linecap:round; stroke-linejoin:round; flex-shrink:0;}
+
+  .glow{position:fixed; top:-10%; left:50%; transform:translateX(-50%); width:900px; height:500px; z-index:0;
+    background:radial-gradient(ellipse at center, rgba(47,92,255,.10) 0%, rgba(0,184,217,.06) 40%, transparent 70%);
+    filter:blur(40px); pointer-events:none;
+  }
+  .wrap{position:relative; z-index:1;}
+
+  /* --- Header + tabbar (sticky block) --- */
+  .site-head{position:sticky; top:0; z-index:30; background:rgba(251,251,253,.86); backdrop-filter:blur(10px); border-bottom:1px solid var(--line);}
+  header{display:grid; grid-template-columns:1fr auto 1fr; align-items:center; padding:20px 6vw;}
+  .brand{font-weight:600; font-size:.88rem; letter-spacing:-0.005em; justify-self:start; color:var(--muted); white-space:nowrap; display:flex; align-items:center; gap:8px;}
+  .meditate-icon{width:32px; height:32px; color:var(--accent); flex-shrink:0; animation:meditateFloat 3.4s ease-in-out infinite;}
+  .meditate-rays{transform-origin:12px 12px; animation:rayPulse 3.4s ease-in-out infinite;}
+  @keyframes meditateFloat{ 0%,100%{transform:translateY(0) rotate(0deg);} 50%{transform:translateY(-3.5px) rotate(-3deg);} }
+  @keyframes rayPulse{ 0%,100%{opacity:.55;} 50%{opacity:1;} }
+  @media (prefers-reduced-motion: reduce){ .meditate-icon, .meditate-rays{animation:none;} }
+
+  .header-title{justify-self:center; display:flex; align-items:center; gap:8px; font-size:.82rem; white-space:nowrap;}
+  .header-title .h-main{font-weight:700; color:var(--ink);}
+  .header-title .h-sep{color:var(--line);}
+  .header-title .h-sub{color:var(--muted); font-weight:500;}
+
+  .phone-pill{justify-self:end; display:flex; align-items:center; gap:10px; padding:6px 6px 6px 18px; border:none; border-radius:999px; background:var(--accent); text-decoration:none; color:#fff; font-size:.85rem; font-weight:600; box-shadow:0 6px 16px -6px rgba(47,92,255,.55); transition:.15s;}
+  .phone-pill .ring{width:30px; height:30px; border-radius:50%; background:#fff; display:flex; align-items:center; justify-content:center; flex-shrink:0;}
+  .phone-pill .ring .icon{width:15px; height:15px; color:var(--accent);}
+  .phone-pill:hover{background:#2549d1; box-shadow:0 8px 20px -6px rgba(47,92,255,.65);}
+
+  .tabbar{display:flex; border-top:1px solid var(--line);}
+  .tab{flex:1; text-align:center; padding:14px 10px; font-size:.74rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); cursor:pointer; border:none; border-bottom:2px solid transparent; background:none; font-family:inherit; transition:.15s;}
+  .tab:hover{color:var(--ink);}
+  .tab.active{color:var(--ink); border-bottom-color:var(--accent);}
+
+  @media (max-width:760px){ .header-title{display:none;} }
+
+  /* --- Pages --- */
+  .page{display:none;}
+  .page.active{display:block; animation:fadeIn .25s ease;}
+  @keyframes fadeIn{ from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:translateY(0);} }
+
+  section{padding:9vh 6vw; max-width:1120px; margin:0 auto;}
+  .reveal{opacity:0; transform:translateY(16px); transition:opacity .6s ease, transform .6s ease;}
+  .reveal.visible{opacity:1; transform:translateY(0);}
+  .section-head{text-align:center; margin-bottom:44px;}
+  .section-head .eyebrow{margin-bottom:16px; justify-content:center;}
+  .section-head h2{font-size:clamp(1.5rem,3vw,2.05rem);}
+  .eyebrow{display:flex; align-items:center; justify-content:center; gap:10px; font-size:.78rem; font-weight:600; letter-spacing:.06em; color:var(--muted); text-transform:uppercase;}
+  .eyebrow .line{width:28px; height:1px; background:var(--line);}
+
+  /* --- À propos --- */
+  .ap-hero{display:grid; grid-template-columns:1.25fr 1fr; gap:52px; align-items:center; max-width:1040px; margin:0 auto;}
+  .ap-hero-left{text-align:left;}
+  .ap-hero-left h1{font-size:clamp(2rem,3.6vw,2.7rem); line-height:1.16; margin-bottom:18px;}
+  .ap-hero-left h1 .accent{background:linear-gradient(100deg,var(--accent),var(--accent2)); -webkit-background-clip:text; background-clip:text; color:transparent;}
+  .ap-hero-left p{color:var(--muted); font-size:1.02rem; line-height:1.6;}
+  .ap-hero-photo{width:100%; max-width:270px; aspect-ratio:1/1; border-radius:50%; overflow:hidden; margin:0 auto; box-shadow:0 18px 40px -14px rgba(16,24,40,.22), 0 0 0 1px var(--line);}
+  .ap-hero-photo img{width:100%; height:100%; object-fit:cover; display:block;}
+  @media (max-width:800px){ .ap-hero{grid-template-columns:1fr;} .ap-hero-left{text-align:center;} .ap-hero-photo{margin:0 auto;} }
+
+  .stats-row{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:14px; overflow:hidden; max-width:460px; margin-top:36px;}
+  .stat-card{background:var(--surface); padding:22px 12px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; gap:7px;}
+  .stat-card .num{font-family:'Cabinet Grotesk','Switzer',sans-serif; font-size:1.7rem; font-weight:700; color:var(--ink); line-height:1;}
+  .stat-card .lbl{font-size:.64rem; color:var(--muted); text-transform:uppercase; letter-spacing:.03em; font-weight:600; line-height:1.3;}
+  .stat-tags{display:flex; flex-wrap:wrap; gap:6px; justify-content:center;}
+  .stat-tag{font-size:.66rem; padding:4px 11px; border-radius:20px; border:1px solid var(--line); color:var(--muted); font-weight:600;}
+  @media (max-width:800px){ .stats-row{margin:36px auto 0;} }
+
+  .story{max-width:740px; margin:0 auto; text-align:center;}
+  .story h2{margin-bottom:20px;}
+  .story p{color:var(--muted); line-height:1.75; font-size:.98rem; text-align:left; margin-bottom:18px;}
+  .story p:last-child{margin-bottom:0;}
+
+  /* --- Expérience --- */
+  .exp-columns{display:grid; grid-template-columns:1fr 1fr; gap:56px; max-width:980px; margin:0 auto;}
+  .exp-col h3{font-size:.82rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--accent); margin-bottom:26px; padding-bottom:12px; border-bottom:1px solid var(--line);}
+  .exp-col-spacer{height:54px;}
+  @media (max-width:760px){ .exp-col-spacer{display:none;} }
+  .timeline{display:flex; flex-direction:column; border-left:2px solid var(--line); padding-left:26px; margin-left:4px;}
+  .tl-item{position:relative; padding-bottom:32px;}
+  .tl-item:last-child{padding-bottom:0;}
+  .tl-item::before{content:''; position:absolute; left:-31px; top:3px; width:8px; height:8px; border-radius:50%; background:var(--accent); border:3px solid var(--accent-soft);}
+  .tl-item h4{font-size:.92rem; margin-bottom:4px; font-family:'Cabinet Grotesk'; font-weight:700;}
+  .tl-item p{color:var(--muted); font-size:.84rem; line-height:1.5;}
+  .tl-item .yr{color:var(--accent); font-weight:700; font-size:.76rem; display:block; margin-bottom:3px; letter-spacing:.02em;}
+  @media (max-width:760px){ .exp-columns{grid-template-columns:1fr; gap:40px;} }
+
+  .diploma-block{max-width:980px; margin:56px auto 0; padding-top:48px; border-top:1px solid var(--line);}
+  .certs-block{max-width:980px; margin:44px auto 0;}
+  .certs-title{font-size:.82rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--accent); margin-bottom:22px; text-align:center;}
+  .diploma-card{max-width:520px; margin:0 auto;}
+  .certs-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:14px;}
+  .cert-card{display:flex; align-items:flex-start; gap:12px; padding:16px; background:var(--surface); border:1px solid var(--line); border-radius:10px; text-decoration:none; color:var(--ink); transition:.2s;}
+  .cert-card:hover{border-color:var(--accent); box-shadow:0 8px 20px -10px rgba(16,24,40,.14); transform:translateY(-2px);}
+  .cert-badge{width:34px; height:34px; border-radius:8px; background:var(--accent-soft); display:flex; align-items:center; justify-content:center; flex-shrink:0;}
+  .cert-badge .icon{width:18px; height:18px; color:var(--accent);}
+  .cert-info h4{font-size:.84rem; font-weight:700; line-height:1.35; margin-bottom:4px;}
+  .cert-info p{font-size:.74rem; color:var(--muted);}
+
+  /* --- Portfolio : cartes qui se retournent au clic --- */
+  .portfolio-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:18px;}
+  .proj{perspective:1400px; height:340px; cursor:pointer;}
+  .proj-inner{position:relative; width:100%; height:100%; transition:transform .55s cubic-bezier(.4,.2,.2,1); transform-style:preserve-3d;}
+  .proj.flipped .proj-inner{transform:rotateY(180deg);}
+  .proj-front, .proj-back{position:absolute; inset:0; backface-visibility:hidden; -webkit-backface-visibility:hidden; border:1px solid var(--line); border-radius:12px; background:var(--surface); overflow:hidden; transition:.2s;}
+  .proj:hover .proj-front{box-shadow:0 8px 24px -10px rgba(16,24,40,.14); transform:translateY(-3px);}
+  .proj-visual{height:96px; background:linear-gradient(135deg,#f4f6fb,#eef7fa); display:flex; align-items:center; padding:0 18px; gap:8px; border-bottom:1px solid var(--line);}
+  .proj-visual .dot{width:6px; height:6px; border-radius:50%; background:var(--accent);}
+  .proj-stage{font-size:.72rem; font-weight:700; letter-spacing:.06em; color:var(--muted); text-transform:uppercase;}
+  .proj-body{padding:20px;}
+  .proj-body h3{font-size:.95rem; margin-bottom:6px;}
+  .proj-body p{color:var(--muted); font-size:.83rem; margin-bottom:12px; line-height:1.5;}
+  .proj-tags{display:flex; gap:6px; flex-wrap:wrap;}
+  .proj-tags span{font-size:.68rem; padding:3px 9px; border-radius:5px; border:1px solid var(--line); color:var(--muted); font-weight:500;}
+  .proj-flip-hint{position:absolute; top:12px; right:12px; width:24px; height:24px; border-radius:50%; background:var(--accent-soft); display:flex; align-items:center; justify-content:center; z-index:2;}
+  .proj-flip-hint .icon{width:13px; height:13px; color:var(--accent);}
+
+  .proj-back{transform:rotateY(180deg); padding:22px; display:flex; flex-direction:column;}
+  .proj-back h3{font-size:.92rem; margin-bottom:10px;}
+  .proj-back p{color:var(--muted); font-size:.82rem; line-height:1.55; flex:1;}
+  .proj-back .proj-visual-placeholder{border:1.5px dashed var(--line); border-radius:8px; height:70px; display:flex; align-items:center; justify-content:center; font-size:.7rem; color:var(--muted); margin-bottom:12px; text-transform:uppercase; letter-spacing:.04em;}
+  .proj-pdf-link{display:inline-flex; align-items:center; gap:6px; font-size:.78rem; font-weight:600; color:var(--accent); text-decoration:none; margin-top:12px;}
+  .proj-pdf-link .icon{width:14px; height:14px;}
+  .proj-pdf-link:hover{text-decoration:underline;}
+
+  footer{display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:20px; padding:5vh 6vw; border-top:1px solid var(--line); color:var(--muted); font-size:.85rem;}
+  footer .foot-brand{justify-self:start; font-weight:700; color:var(--ink); font-family:'Cabinet Grotesk'; letter-spacing:-0.01em; text-decoration:none; border-bottom:1px solid transparent;}
+  footer .foot-brand:hover{border-bottom-color:var(--ink);}
+  footer .foot-contact{justify-self:center; color:var(--accent); text-decoration:none; font-weight:600; border-bottom:1px solid transparent;}
+  footer .foot-contact:hover{border-bottom-color:var(--accent);}
+  footer .foot-social{justify-self:end; display:flex; gap:16px;}
+  footer .foot-social a{display:flex; align-items:center; gap:6px; color:var(--muted); text-decoration:none; font-weight:500; font-size:.82rem;}
+  footer .foot-social a:hover{color:var(--ink);}
+  footer .foot-social .icon{width:16px; height:16px;}
+  @media (max-width:640px){ footer{grid-template-columns:1fr; text-align:center; justify-items:center;} }
+
+  /* --- Chatbot flottant (bulle bas-droite) --- */
+  .chat-fab{position:fixed; bottom:26px; right:26px; width:58px; height:58px; border-radius:50%; background:linear-gradient(135deg,var(--accent),var(--accent2)); display:flex; align-items:center; justify-content:center; cursor:pointer; z-index:100; box-shadow:0 10px 28px -8px rgba(47,92,255,.5); border:none; transition:.15s;}
+  .chat-fab:hover{transform:translateY(-2px); box-shadow:0 14px 32px -8px rgba(47,92,255,.6);}
+  .chat-fab .icon{width:26px; height:26px; color:#fff; stroke-width:1.8;}
+  .chat-window{position:fixed; bottom:96px; right:26px; width:330px; max-height:440px; background:var(--surface); border:1px solid var(--line); border-radius:14px; box-shadow:0 1px 2px rgba(16,24,40,.04), 0 20px 45px -12px rgba(16,24,40,.18); display:none; flex-direction:column; z-index:100; overflow:hidden;}
+  .chat-window.open{display:flex;}
+  .chat-head{display:flex; align-items:center; gap:12px; padding:16px 18px; border-bottom:1px solid var(--line);}
+  .chat-avatar{width:32px; height:32px; border-radius:8px; background:linear-gradient(135deg,var(--accent),var(--accent2)); display:flex; align-items:center; justify-content:center; color:#fff; font-weight:700; font-size:.8rem; flex-shrink:0;}
+  .chat-head b{font-size:.86rem; display:block;}
+  .chat-head .status{display:flex; align-items:center; gap:6px; font-size:.72rem; color:var(--muted);}
+  .status-dot{width:6px; height:6px; border-radius:50%; background:#12b76a;}
+  .chat-close{margin-left:auto; cursor:pointer; color:var(--muted); font-size:1rem; background:none; border:none; line-height:1;}
+  .chat-body{padding:18px; overflow-y:auto;}
+  .msg{border-left:2px solid var(--accent); padding:2px 0 2px 14px; font-size:.86rem; line-height:1.5; color:var(--ink); margin-bottom:16px;}
+  .rows{display:flex; flex-direction:column;}
+  .row-btn{display:flex; align-items:center; gap:12px; width:100%; text-align:left; background:none; border:none; border-top:1px solid var(--line); color:var(--ink); padding:13px 4px; cursor:pointer; font-size:.84rem; font-weight:500; font-family:inherit; transition:.15s;}
+  .rows .row-btn:first-child{border-top:none;}
+  .row-btn:hover{background:var(--accent-soft); padding-left:10px;}
+  .row-btn .icon{width:17px; height:17px; color:var(--accent);}
+  .row-btn .label{flex:1;}
+  .row-btn .chevron{width:15px; height:15px; color:var(--muted); transition:transform .15s;}
+  .row-btn:hover .chevron{transform:translateX(3px); color:var(--accent);}
+
+  @media (max-width:400px){ .chat-window{width:90vw; right:5vw;} }
+
+  /* --- Modal formulaire : demande de portfolio --- */
+  .pdf-modal-overlay{position:fixed; inset:0; background:rgba(11,13,18,.55); display:none; align-items:center; justify-content:center; z-index:200; padding:20px;}
+  .pdf-modal-overlay.open{display:flex;}
+  .pdf-modal{background:var(--surface); border-radius:16px; width:100%; max-width:440px; max-height:88vh; overflow-y:auto; box-shadow:0 20px 60px -15px rgba(16,24,40,.35); padding:28px;}
+  .pdf-modal-head{display:flex; align-items:flex-start; justify-content:space-between; gap:12px; margin-bottom:6px;}
+  .pdf-modal-head h3{font-size:1.05rem; font-weight:700; letter-spacing:-0.01em;}
+  .pdf-modal-close{background:none; border:none; cursor:pointer; color:var(--muted); font-size:1.1rem; line-height:1; padding:2px;}
+  .pdf-modal-sub{color:var(--muted); font-size:.84rem; line-height:1.5; margin-bottom:20px;}
+  .pdf-field{margin-bottom:14px;}
+  .pdf-field label{display:block; font-size:.72rem; font-weight:600; text-transform:uppercase; letter-spacing:.04em; color:var(--muted); margin-bottom:6px;}
+  .pdf-field input, .pdf-field textarea{width:100%; border:1px solid var(--line); border-radius:9px; padding:10px 12px; font-size:.88rem; font-family:inherit; color:var(--ink); background:var(--bg); resize:vertical; box-sizing:border-box;}
+  .pdf-field input:focus, .pdf-field textarea:focus{outline:none; border-color:var(--accent);}
+  .pdf-modal-submit{width:100%; margin-top:6px; padding:12px; border:none; border-radius:10px; background:var(--accent); color:#fff; font-weight:600; font-size:.88rem; cursor:pointer; font-family:inherit; transition:.15s;}
+  .pdf-modal-submit:hover{background:#2450e8;}
+  .pdf-modal-form.hide{display:none;}
+  .pdf-modal-confirm{display:none; text-align:center; padding:10px 0 4px;}
+  .pdf-modal-confirm.show{display:block;}
+  .pdf-modal-confirm .ok-icon{width:44px; height:44px; border-radius:50%; background:var(--accent-soft); color:var(--accent); display:flex; align-items:center; justify-content:center; margin:0 auto 16px;}
+  .pdf-modal-confirm .ok-icon svg{width:22px; height:22px;}
+  .pdf-modal-confirm p{color:var(--muted); font-size:.88rem; line-height:1.5; margin-bottom:18px;}
+</style>
+</head>
+<body>
+<div class="glow"></div>
+<div class="wrap">
+
+<div class="site-head">
+  <header>
+    <div class="brand">
+      Bonjour, je suis Sarah Angèle
+      <svg class="meditate-icon" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <g class="meditate-rays">
+          <line x1="12" y1="6.5" x2="12" y2="0.3"/>
+          <line x1="10.2" y1="6.9" x2="8.5" y2="1.8"/>
+          <line x1="13.8" y1="6.9" x2="15.5" y2="1.8"/>
+          <line x1="8.0" y1="7.6" x2="5.1" y2="3.4"/>
+          <line x1="16.0" y1="7.6" x2="18.9" y2="3.4"/>
+          <line x1="6.2" y1="8.6" x2="3.2" y2="6.4"/>
+          <line x1="17.8" y1="8.6" x2="20.8" y2="6.4"/>
+        </g>
+        <circle cx="12" cy="10.3" r="2.9"/>
+        <path d="M9.7 13.4 Q12 12.1 14.3 13.4"/>
+        <path d="M9.7 13.4 C7.6 14.2 6.2 16.5 6.5 19.3"/>
+        <path d="M14.3 13.4 C16.4 14.2 17.8 16.5 17.5 19.3"/>
+        <path d="M5 23 Q9.5 19.2 12 20.3 Q8.5 22.3 5 23 Z"/>
+        <path d="M19 23 Q14.5 19.2 12 20.3 Q15.5 22.3 19 23 Z"/>
+      </svg>
+    </div>
+    <div class="header-title">
+      <span class="h-main">Senior Product Manager</span>
+      <span class="h-sep">·</span>
+      <span class="h-sub">+10 ans d'XP</span>
+      <span class="h-sep">·</span>
+      <span class="h-sub">Contributrice ↔ Manager</span>
+    </div>
+    <a class="phone-pill" href="#book">
+      <span>Réserver un appel</span>
+      <span class="ring">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M6.5 3.5c.6 1.4 1.3 2.7 2.2 3.9.3.4.2 1-.2 1.3l-1.6 1.4c1 2.2 2.8 4 5 5l1.4-1.6c.3-.4.9-.5 1.3-.2 1.2.9 2.5 1.6 3.9 2.2.6.3.9.9.7 1.5l-.6 2c-.2.6-.8 1-1.4.9C9.9 19.2 4.8 14.1 3.2 6.9c-.1-.6.3-1.2.9-1.4l2-.6c.6-.2 1.2.1 1.4.6z"/></svg>
+      </span>
+    </a>
+  </header>
+  <div class="tabbar">
+    <button class="tab active" data-page="a-propos">À propos</button>
+    <button class="tab" data-page="experience">Expérience</button>
+    <button class="tab" data-page="portfolio">Portfolio</button>
+  </div>
+</div>
+
+<!-- PAGE 1 : À PROPOS -->
+<div class="page active" id="page-a-propos">
+  <section class="ap-hero">
+    <div class="ap-hero-left">
+      <h1>Je conçois des produits <span class="accent">qui scale</span>.</h1>
+      <p>Product Manager senior, portée par une curiosité insatiable pour les produits complexes et techniques, de l'IoT au quantique. Cap vers de nouveaux défis produits.</p>
+      <div class="stats-row reveal">
+        <div class="stat-card"><span class="num">+10</span><span class="lbl">Ans d'XP</span></div>
+        <div class="stat-card"><span class="num">+20</span><span class="lbl">Projets</span></div>
+        <div class="stat-card"><span class="num">+100</span><span class="lbl">Heures d'enseignement</span></div>
+      </div>
+    </div>
+    <div class="ap-hero-photo"><img src="sarah-photo.png" alt="Sarah Angèle"></div>
+  </section>
+
+  <section class="story reveal">
+    <h2>Un parcours atypique</h2>
+    <p>Je n'ai pas suivi le parcours classique d'une Product Manager. Tout commence en 2006, presque par hasard : un cours de méthodologie de la recherche, une passion pour le bricolage depuis toute petite, un livre des Presses Universitaires de France, et l'intitulé « Chef de produit » s'impose à moi. L'entre-deux qu'il me fallait, entre technique et créatif.</p>
+    <p>Autodidacte, j'apprends à coder en 2011 (HTML, CSS, JavaScript) et je construis mes premiers sites. Cette appétence technique ne me quittera plus : un projet IoT chez Germitec, puis un autre chez Air France, pour de la détection RFID. Le cloud, ensuite, chez Gandi, puis chez Pasqal, où cloud et quantique se rejoignent.</p>
+    <p>Passionnée d'astrophysique depuis 2017, j'ai englouti des centaines d'heures de documentaires, LIGO et Virgo en fond sonore. Je me souviens du jour où j'ai vu un chef de produit travailler avec des chercheurs sur les instruments qui mesurent les ondes gravitationnelles. Je me suis dit : je peux faire ça. En rejoignant Pasqal, cette intuition prend tout son sens : pendant près de quatre ans, j'y conçois des produits destinés à démocratiser l'accès aux technologies quantiques.</p>
+    <p>Aujourd'hui, je poursuis cette trajectoire autour de l'intelligence artificielle : nouveaux projets, et une certification IBM AI Dev & AI Product en cours de finalisation, avec un module spécialisé Python/Flask.</p>
+  </section>
+</div>
+
+<!-- PAGE 2 : EXPÉRIENCE -->
+<div class="page" id="page-experience">
+  <section>
+    <div class="section-head reveal">
+      <h2>[à retravailler]</h2>
+      <div class="stat-tags" style="margin-top:16px;">
+        <span class="stat-tag">Cloud</span>
+        <span class="stat-tag">Quantum</span>
+        <span class="stat-tag">IA</span>
+        <span class="stat-tag">IoT</span>
+      </div>
+    </div>
+    <div class="exp-columns reveal">
+      <div class="exp-col">
+        <h3>Progression</h3>
+        <div class="timeline">
+          <div class="tl-item"><span class="yr">Depuis 2022</span><h4>Senior Product Manager — Pasqal</h4><p>Définition de la vision et de la roadmap du service cloud quantique (300 qubits, technologie à atomes neutres), de la V0 à l'ouverture aux premiers grands comptes (banque, recherche académique).</p></div>
+          <div class="tl-item"><span class="yr">2020</span><h4>Product Owner — Gandi</h4><p>Pilotage d'une squad de 6 développeurs au sein d'une PME de 180 salariés, refonte du parcours d'achat et lancement de l'offre Cloud VPS, en lien avec les équipes marketing, finance et support.</p></div>
+          <div class="tl-item"><span class="yr">2019</span><h4>Product Owner — Air France</h4><p>Pilotage de deux projets IoT : détection d'équipements de sécurité par RFID en coordination avec une équipe externe, et refonte de la documentation de maintenance Boeing/Airbus, avec mise en place des rituels agiles pour l'équipe interne.</p></div>
+        </div>
+      </div>
+      <div class="exp-col">
+        <div class="exp-col-spacer" aria-hidden="true"></div>
+        <div class="timeline">
+          <div class="tl-item"><span class="yr">2018</span><h4>Product Manager — Germitec</h4><p>Animation d'ateliers de discovery avec la direction, cadrage produit et proposition de roadmap — une mission d'audit qui a posé les bases d'une vision produit.</p></div>
+          <div class="tl-item"><span class="yr">Depuis 2017</span><h4>Formatrice / Product Coach</h4><p>Interventions et formations auprès de cursus post-bac management et d'adultes en reconversion professionnelle, sur la gestion de produit et projet, et l'agilité.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="diploma-block reveal">
+      <h3 class="certs-title">Diplôme</h3>
+      <div class="cert-card diploma-card">
+        <div class="cert-badge"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3L2 8l10 5 10-5-10-5z"/><path d="M6 10.5V16c0 1.5 2.5 3 6 3s6-1.5 6-3v-5.5"/><path d="M22 8v6"/></svg></div>
+        <div class="cert-info"><h4>Titre Product Manager</h4><p>Diplôme de niveau 7 (bac +5) · OpenClassrooms — Parcours VAE 2026 (en cours)</p></div>
+      </div>
+    </div>
+
+    <div class="certs-block reveal">
+      <h3 class="certs-title">Certifications</h3>
+      <div class="certs-grid">
+        <a class="cert-card" href="https://www.coursera.org/account/accomplishments/verify/E694MNSA87JN" target="_blank" rel="noopener">
+          <div class="cert-badge"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="9" r="6"/><path d="M9 14.5L7 22l5-3 5 3-2-7.5"/></svg></div>
+          <div class="cert-info"><h4>Generative AI Applications</h4><p>IBM · Coursera — 2026</p></div>
+        </a>
+        <a class="cert-card" href="https://coursera.org/verify/PCTZBGZ0RGQE" target="_blank" rel="noopener">
+          <div class="cert-badge"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="9" r="6"/><path d="M9 14.5L7 22l5-3 5 3-2-7.5"/></svg></div>
+          <div class="cert-info"><h4>Software Engineering</h4><p>IBM · Coursera — 2026</p></div>
+        </a>
+        <a class="cert-card" href="https://www.credly.com/users/sarah-angele" target="_blank" rel="noopener">
+          <div class="cert-badge"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="9" r="6"/><path d="M9 14.5L7 22l5-3 5 3-2-7.5"/></svg></div>
+          <div class="cert-info"><h4>AI Artificial Intelligence</h4><p>IBM · Coursera — 2026</p></div>
+        </a>
+        <a class="cert-card" href="https://www.credly.com/users/sarah-angele" target="_blank" rel="noopener">
+          <div class="cert-badge"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="9" r="6"/><path d="M9 14.5L7 22l5-3 5 3-2-7.5"/></svg></div>
+          <div class="cert-info"><h4>Product Manager Professional Certificate</h4><p>IBM · Coursera — 2026</p></div>
+        </a>
+        <a class="cert-card" href="https://www.credly.com/users/sarah-angele" target="_blank" rel="noopener">
+          <div class="cert-badge"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="9" r="6"/><path d="M9 14.5L7 22l5-3 5 3-2-7.5"/></svg></div>
+          <div class="cert-info"><h4>Agile Development and Scrum</h4><p>IBM · Coursera — 2025</p></div>
+        </a>
+        <a class="cert-card" href="#" target="_blank" rel="noopener">
+          <div class="cert-badge"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="9" r="6"/><path d="M9 14.5L7 22l5-3 5 3-2-7.5"/></svg></div>
+          <div class="cert-info"><h4>Wireframes and Low Fidelity Prototypes</h4><p>Google · Coursera — 2025</p></div>
+        </a>
+        <a class="cert-card" href="#" target="_blank" rel="noopener">
+          <div class="cert-badge"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="9" r="6"/><path d="M9 14.5L7 22l5-3 5 3-2-7.5"/></svg></div>
+          <div class="cert-info"><h4>UX Design process : Empathize, Define and Ideate</h4><p>Google · Coursera — 2024</p></div>
+        </a>
+        <a class="cert-card" href="#" target="_blank" rel="noopener">
+          <div class="cert-badge"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="9" r="6"/><path d="M9 14.5L7 22l5-3 5 3-2-7.5"/></svg></div>
+          <div class="cert-info"><h4>UX User Experience Design</h4><p>Google · Coursera — 2024</p></div>
+        </a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- PAGE 3 : PORTFOLIO -->
+<div class="page" id="page-portfolio">
+  <section>
+    <div class="section-head reveal">
+      <h2>Le cycle produit, de bout en bout</h2>
+      <p style="color:var(--muted); font-size:.82rem; margin-top:10px;">Clique sur une carte pour voir le détail</p>
+    </div>
+    <div class="portfolio-grid reveal">
+
+      <div class="proj" onclick="this.classList.toggle('flipped')">
+        <div class="proj-inner">
+          <div class="proj-front">
+            <div class="proj-flip-hint"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 2.1l4 4-4 4"/><path d="M3 12.9V11a4 4 0 0 1 4-4h14"/><path d="M7 21.9l-4-4 4-4"/><path d="M21 11.1V13a4 4 0 0 1-4 4H3"/></svg></div>
+            <div class="proj-visual"><span class="dot"></span><span class="proj-stage">Strategy</span></div>
+            <div class="proj-body"><h3>Vision produit & positionnement</h3><p>Scale-up deep-tech cloud/infra, ~180 salariés, en préparation de série C. Structuration du premier portfolio produit à partir de 3 équipes techniques travaillant en silo. Vision co-construite avec les leads tech, utilisée pour sécuriser une levée en série C — valorisation x2 vs la série B.</p><div class="proj-tags"><span>Stratégie</span><span>Vision</span></div></div>
+          </div>
+          <div class="proj-back">
+            <h3>Vision produit & positionnement</h3>
+            <div class="proj-visual-placeholder">Mockup / capture</div>
+            <p>Cas d'étude complet — contexte, ateliers de cadrage avec les 3 leads tech, rôle exact et résultats chiffrés — disponible sur demande.</p>
+            <a class="proj-pdf-link" href="#" onclick="event.stopPropagation(); openPdfModal('portfolio'); return false;">
+              <svg class="icon" viewBox="0 0 24 24"><path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4"/></svg>
+              Recevoir le portfolio ↗
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj" onclick="this.classList.toggle('flipped')">
+        <div class="proj-inner">
+          <div class="proj-front">
+            <div class="proj-flip-hint"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 2.1l4 4-4 4"/><path d="M3 12.9V11a4 4 0 0 1 4-4h14"/><path d="M7 21.9l-4-4 4-4"/><path d="M21 11.1V13a4 4 0 0 1-4 4H3"/></svg></div>
+            <div class="proj-visual"><span class="dot"></span><span class="proj-stage">Discovery</span></div>
+            <div class="proj-body"><h3>Recherche utilisateur & segmentation</h3><p>Segment cloud/infra, en phase de structuration produit. Recherche utilisateur pour clarifier qui sont réellement les utilisateurs — chercheurs, profils business ou techniciens — et adapter le produit en conséquence.</p><div class="proj-tags"><span>Discovery</span><span>Recherche</span></div></div>
+          </div>
+          <div class="proj-back">
+            <h3>Recherche utilisateur & segmentation</h3>
+            <div class="proj-visual-placeholder">Mockup / capture</div>
+            <p>Cas d'étude complet — tests utilisateurs, empathy maps, benchmark concurrentiel et ciblage du persona prioritaire — disponible sur demande.</p>
+            <a class="proj-pdf-link" href="#" onclick="event.stopPropagation(); openPdfModal('portfolio'); return false;">
+              <svg class="icon" viewBox="0 0 24 24"><path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4"/></svg>
+              Recevoir le portfolio ↗
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj" onclick="this.classList.toggle('flipped')">
+        <div class="proj-inner">
+          <div class="proj-front">
+            <div class="proj-flip-hint"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 2.1l4 4-4 4"/><path d="M3 12.9V11a4 4 0 0 1 4-4h14"/><path d="M7 21.9l-4-4 4-4"/><path d="M21 11.1V13a4 4 0 0 1-4 4H3"/></svg></div>
+            <div class="proj-visual"><span class="dot"></span><span class="proj-stage">Build</span></div>
+            <div class="proj-body"><h3>Détection sécurité embarquée (RFID)</h3><p>Secteur aéronautique / IoT, test alpha interne (80 utilisateurs). Détection de matériel de sécurité à bord via technologie RFID, déployée sur les tablettes des techniciens de maintenance. Taux de réussite des tests : 70%.</p><div class="proj-tags"><span>Build</span><span>IoT</span><span>RFID</span></div></div>
+          </div>
+          <div class="proj-back">
+            <h3>Détection sécurité embarquée (RFID)</h3>
+            <div class="proj-visual-placeholder">Mockup / capture</div>
+            <p>Cas d'étude complet — conception de la solution RFID, tests en conditions réelles avec les techniciens, résultats et perspective de scale — disponible sur demande.</p>
+            <a class="proj-pdf-link" href="#" onclick="event.stopPropagation(); openPdfModal('portfolio'); return false;">
+              <svg class="icon" viewBox="0 0 24 24"><path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4"/></svg>
+              Recevoir le portfolio ↗
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj" onclick="this.classList.toggle('flipped')">
+        <div class="proj-inner">
+          <div class="proj-front">
+            <div class="proj-flip-hint"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 2.1l4 4-4 4"/><path d="M3 12.9V11a4 4 0 0 1 4-4h14"/><path d="M7 21.9l-4-4 4-4"/><path d="M21 11.1V13a4 4 0 0 1-4 4H3"/></svg></div>
+            <div class="proj-visual"><span class="dot"></span><span class="proj-stage">Go-to-Market</span></div>
+            <div class="proj-body"><h3>Démocratiser une techno de rupture</h3><p>Scale-up deep tech (infrastructure de calcul avancé), produit complexe à rendre accessible à un large public. Lancement progressif accompagné d'une plateforme de learning et d'une interface no-code pour démocratiser l'usage. +700 utilisateurs en 1 mois.</p><div class="proj-tags"><span>Launch</span><span>Positionnement</span></div></div>
+          </div>
+          <div class="proj-back">
+            <h3>Démocratiser une techno de rupture</h3>
+            <div class="proj-visual-placeholder">Mockup / capture</div>
+            <p>Cas d'étude complet — silent launch, itérations avec partenaires bêta, release candidate externe et conférence de lancement — disponible sur demande.</p>
+            <a class="proj-pdf-link" href="#" onclick="event.stopPropagation(); openPdfModal('portfolio'); return false;">
+              <svg class="icon" viewBox="0 0 24 24"><path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4"/></svg>
+              Recevoir le portfolio ↗
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj" onclick="this.classList.toggle('flipped')">
+        <div class="proj-inner">
+          <div class="proj-front">
+            <div class="proj-flip-hint"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 2.1l4 4-4 4"/><path d="M3 12.9V11a4 4 0 0 1 4-4h14"/><path d="M7 21.9l-4-4 4-4"/><path d="M21 11.1V13a4 4 0 0 1-4 4H3"/></svg></div>
+            <div class="proj-visual"><span class="dot"></span><span class="proj-stage">Scale</span></div>
+            <div class="proj-body"><h3>Un copilote IA pour le calcul avancé</h3><p>Deep tech, version 0. Développement d'un copilote basé sur un LLM pour accompagner les utilisateurs de bout en bout : cadrage du problème métier, choix de l'algorithme, codage des séquences et exécution sur les infrastructures de calcul avancé. Version test MVP.</p><div class="proj-tags"><span>Scale</span><span>IA</span></div></div>
+          </div>
+          <div class="proj-back">
+            <h3>Un copilote IA pour le calcul avancé</h3>
+            <div class="proj-visual-placeholder">Mockup / capture</div>
+            <p>Cas d'étude complet — conception du copilote LLM, étapes de bout en bout (métier → algo → code → exécution) et résultats du MVP — disponible sur demande.</p>
+            <a class="proj-pdf-link" href="#" onclick="event.stopPropagation(); openPdfModal('portfolio'); return false;">
+              <svg class="icon" viewBox="0 0 24 24"><path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4"/></svg>
+              Recevoir le portfolio ↗
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj" onclick="this.classList.toggle('flipped')">
+        <div class="proj-inner">
+          <div class="proj-front">
+            <div class="proj-flip-hint"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 2.1l4 4-4 4"/><path d="M3 12.9V11a4 4 0 0 1 4-4h14"/><path d="M7 21.9l-4-4 4-4"/><path d="M21 11.1V13a4 4 0 0 1-4 4H3"/></svg></div>
+            <div class="proj-visual"><span class="dot"></span><span class="proj-stage">Data</span></div>
+            <div class="proj-body"><h3>Piloter un portfolio produit par la donnée</h3><p>Projet communautaire deep tech. Définition d'un cadre de KPIs stratégiques pour orienter les décisions techniques et les évolutions de l'ensemble d'un portfolio produit multi-équipes. Communauté ~700 utilisateurs.</p><div class="proj-tags"><span>Data</span><span>Analytics</span></div></div>
+          </div>
+          <div class="proj-back">
+            <h3>Piloter un portfolio produit par la donnée</h3>
+            <div class="proj-visual-placeholder">Mockup / capture</div>
+            <p>Cas d'étude complet — définition des KPIs cross-fonctionnels, rituels de pilotage et résultats sur la communauté suivie — disponible sur demande.</p>
+            <a class="proj-pdf-link" href="#" onclick="event.stopPropagation(); openPdfModal('portfolio'); return false;">
+              <svg class="icon" viewBox="0 0 24 24"><path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4"/></svg>
+              Recevoir le portfolio ↗
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj" onclick="this.classList.toggle('flipped')">
+        <div class="proj-inner">
+          <div class="proj-front">
+            <div class="proj-flip-hint"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 2.1l4 4-4 4"/><path d="M3 12.9V11a4 4 0 0 1 4-4h14"/><path d="M7 21.9l-4-4 4-4"/><path d="M21 11.1V13a4 4 0 0 1-4 4H3"/></svg></div>
+            <div class="proj-visual"><span class="dot"></span><span class="proj-stage">Ops</span></div>
+            <div class="proj-body"><h3>Ancrer l'agilité dans une squad technique</h3><p>Secteur cloud/hosting (domaines, certificats SSL). Mise en place de rituels agiles au sein d'une squad technique, avec une difficulté initiale d'internalisation de la review de sprint. Adoption effective en 6 mois.</p><div class="proj-tags"><span>Ops</span><span>Process</span></div></div>
+          </div>
+          <div class="proj-back">
+            <h3>Ancrer l'agilité dans une squad technique</h3>
+            <div class="proj-visual-placeholder">Mockup / capture</div>
+            <p>Cas d'étude complet — animation des rituels, ajustements itératifs et conduite du changement jusqu'à l'adoption réelle par l'équipe — disponible sur demande.</p>
+            <a class="proj-pdf-link" href="#" onclick="event.stopPropagation(); openPdfModal('portfolio'); return false;">
+              <svg class="icon" viewBox="0 0 24 24"><path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4"/></svg>
+              Recevoir le portfolio ↗
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj" onclick="this.classList.toggle('flipped')">
+        <div class="proj-inner">
+          <div class="proj-front">
+            <div class="proj-flip-hint"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 2.1l4 4-4 4"/><path d="M3 12.9V11a4 4 0 0 1 4-4h14"/><path d="M7 21.9l-4-4 4-4"/><path d="M21 11.1V13a4 4 0 0 1-4 4H3"/></svg></div>
+            <div class="proj-visual"><span class="dot"></span><span class="proj-stage">Team</span></div>
+            <div class="proj-body"><h3>Construire une équipe produit à partir de zéro</h3><p>Deep tech, aucune équipe produit existante au départ. Recrutement complet d'une squad produit pour accompagner 3 équipes techniques spécialisées (infra, algorithmie, simulation) : plan de recrutement, fiches de poste, entretiens, jusqu'à la validation des contrats.</p><div class="proj-tags"><span>Management</span><span>Interne</span></div></div>
+          </div>
+          <div class="proj-back">
+            <h3>Construire une équipe produit à partir de zéro</h3>
+            <div class="proj-visual-placeholder">Mockup / capture</div>
+            <p>Cas d'étude complet — plan de recrutement, fiches de poste, sourcing et constitution d'une squad multidisciplinaire de ~7 profils — disponible sur demande.</p>
+            <a class="proj-pdf-link" href="#" onclick="event.stopPropagation(); openPdfModal('portfolio'); return false;">
+              <svg class="icon" viewBox="0 0 24 24"><path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4"/></svg>
+              Recevoir le portfolio ↗
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj" onclick="this.classList.toggle('flipped')">
+        <div class="proj-inner">
+          <div class="proj-front">
+            <div class="proj-flip-hint"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 2.1l4 4-4 4"/><path d="M3 12.9V11a4 4 0 0 1 4-4h14"/><path d="M7 21.9l-4-4 4-4"/><path d="M21 11.1V13a4 4 0 0 1-4 4H3"/></svg></div>
+            <div class="proj-visual"><span class="dot"></span><span class="proj-stage">Coaching</span></div>
+            <div class="proj-body"><h3>Former la prochaine génération de PM</h3><p>École de reconversion professionnelle, profils adultes en transition vers le métier de Product Manager. Coaching sur études de cas concrètes (produits techniques cloud/IA), process discovery et delivery. +60 profils accompagnés, 85% de retours positifs.</p><div class="proj-tags"><span>Coaching</span><span>Enseignement</span></div></div>
+          </div>
+          <div class="proj-back">
+            <h3>Former la prochaine génération de PM</h3>
+            <div class="proj-visual-placeholder">Mockup / capture</div>
+            <p>Cas d'étude complet — cadrage pédagogique, coaching sur études de cas techniques et résultats de l'accompagnement — disponible sur demande.</p>
+            <a class="proj-pdf-link" href="#" onclick="event.stopPropagation(); openPdfModal('portfolio'); return false;">
+              <svg class="icon" viewBox="0 0 24 24"><path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4"/></svg>
+              Recevoir le portfolio ↗
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</div>
+
+<footer>
+  <a class="foot-brand" href="https://sanproduct.com" target="_blank" rel="noopener">sanproduct.com</a>
+  <a class="foot-contact" href="mailto:angele.sarah@gmail.com">Contact</a>
+  <div class="foot-social">
+    <a href="https://www.linkedin.com/in/[ton-profil]" target="_blank" rel="noopener">
+      <svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-.95 1.83-1.95 3.77-1.95C20.9 8.75 22 11 22 14.4V21h-4v-5.8c0-1.4-.03-3.2-1.95-3.2-1.95 0-2.25 1.5-2.25 3.1V21H9z"/></svg>
+      LinkedIn
+    </a>
+    <a href="https://www.malt.fr/profile/[ton-profil]" target="_blank" rel="noopener">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12l2.5 2.5L16 9"/></svg>
+      Malt
+    </a>
+  </div>
+</footer>
+
+</div>
+
+<!-- Chatbot flottant -->
+<button class="chat-fab" onclick="document.getElementById('chatWindow').classList.toggle('open')" aria-label="Ouvrir l'assistant">
+  <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H8l-4 4V5z"/></svg>
+</button>
+<div class="chat-window" id="chatWindow">
+  <div class="chat-head">
+    <div class="chat-avatar">S</div>
+    <div>
+      <b>Assistant</b>
+      <div class="status"><span class="status-dot"></span><span>En ligne</span></div>
+    </div>
+    <button class="chat-close" onclick="document.getElementById('chatWindow').classList.remove('open')">✕</button>
+  </div>
+  <div class="chat-body">
+    <p class="msg">Bonjour, je peux vous orienter directement. Que souhaitez-vous consulter ?</p>
+    <div class="rows">
+      <button class="row-btn" onclick="goTab('a-propos')">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4"/><path d="M9.5 13h5M9.5 16h5M9.5 10h2"/></svg>
+        <span class="label">À propos</span>
+        <svg class="icon chevron" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg>
+      </button>
+      <button class="row-btn" onclick="goTab('experience')">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3 11.2c.5.3.8.9.8 1.5v.3h4.4v-.3c0-.6.3-1.2.8-1.5A6 6 0 0 0 12 3z"/></svg>
+        <span class="label">Explorer mon expérience</span>
+        <svg class="icon chevron" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg>
+      </button>
+      <button class="row-btn" onclick="goTab('portfolio')">
+        <svg class="icon" viewBox="0 0 24 24"><rect x="3" y="3" width="8" height="8" rx="1"/><rect x="13" y="3" width="8" height="8" rx="1"/><rect x="3" y="13" width="8" height="8" rx="1"/><rect x="13" y="13" width="8" height="8" rx="1"/></svg>
+        <span class="label">Parcourir mon portfolio</span>
+        <svg class="icon chevron" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal formulaire : demande de portfolio -->
+<div class="pdf-modal-overlay" id="pdfModalOverlay" onclick="if(event.target===this) closePdfModal()">
+  <div class="pdf-modal">
+    <div class="pdf-modal-head">
+      <h3 id="pdfModalTitle">Recevoir le portfolio</h3>
+      <button class="pdf-modal-close" onclick="closePdfModal()" aria-label="Fermer">✕</button>
+    </div>
+    <p class="pdf-modal-sub">Renseignez vos coordonnées professionnelles et le contexte de votre demande (poste, mission, opportunité) : le PDF détaillé de ce projet vous sera transmis en retour.</p>
+    <form class="pdf-modal-form" id="pdfModalForm" onsubmit="return submitPdfModal(event)">
+      <div class="pdf-field">
+        <label for="pdfCompany">Entreprise</label>
+        <input type="text" id="pdfCompany" required>
+      </div>
+      <div class="pdf-field">
+        <label for="pdfEmail">Email professionnel</label>
+        <input type="email" id="pdfEmail" required>
+      </div>
+      <div class="pdf-field">
+        <label for="pdfMessage">Poste ou proposition</label>
+        <textarea id="pdfMessage" rows="3" placeholder="Ex : Senior Product Manager, mission freelance, poste de CPO..." required></textarea>
+      </div>
+      <button type="submit" class="pdf-modal-submit">Envoyer et recevoir le portfolio</button>
+    </form>
+    <div class="pdf-modal-confirm" id="pdfModalConfirm">
+      <div class="ok-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div>
+      <p>Merci ! Votre demande a bien été transmise. Le portfolio détaillé vous parviendra directement par email.</p>
+      <button type="button" class="pdf-modal-submit" onclick="closePdfModal()">Fermer</button>
+    </div>
+  </div>
+</div>
+
+<script>
+function openPdfModal(stage){
+  const title = (stage === 'portfolio') ? 'Recevoir le portfolio complet' : 'Recevoir le PDF — ' + stage;
+  document.getElementById('pdfModalTitle').textContent = title;
+  document.getElementById('pdfModalForm').classList.remove('hide');
+  document.getElementById('pdfModalForm').reset();
+  document.getElementById('pdfModalConfirm').classList.remove('show');
+  document.getElementById('pdfModalOverlay').classList.add('open');
+}
+function closePdfModal(){
+  document.getElementById('pdfModalOverlay').classList.remove('open');
+}
+function submitPdfModal(e){
+  e.preventDefault();
+  document.getElementById('pdfModalForm').classList.add('hide');
+  document.getElementById('pdfModalConfirm').classList.add('show');
+  return false;
+}
+function activateTab(name){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('active', t.dataset.page===name));
+  document.querySelectorAll('.page').forEach(p=>p.classList.toggle('active', p.id==='page-'+name));
+  window.scrollTo({top:0, behavior:'instant'});
+}
+document.querySelectorAll('.tab').forEach(tab=>{
+  tab.addEventListener('click', ()=>activateTab(tab.dataset.page));
+});
+function goTab(name){
+  activateTab(name);
+  document.getElementById('chatWindow').classList.remove('open');
+}
+
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('visible'); } });
+}, {threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
+
